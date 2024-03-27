@@ -28,7 +28,7 @@ function ChatPage() {
         <button>
           Person 1
           {window.location.href.split("/")[3] !== "first-person" && (
-            <ChatBubbleIcon>{messageNotification}</ChatBubbleIcon>
+            <ChatBubbleIcon />
           )}
         </button>
       </NavLink>
@@ -44,7 +44,7 @@ function ChatPage() {
         <button className="ChatPage">
           Person 2
           {window.location.href.split("/")[3] !== "second-person" && (
-            <ChatBubbleIcon>{messageNotification}</ChatBubbleIcon>
+            <ChatBubbleIcon />
           )}
         </button>
       </NavLink>

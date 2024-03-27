@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect, useRef } from "react";
 import { Avatar, Button, Container, Grid, TextField } from "@material-ui/core";
 import chatStore, { Message } from "../store/chatStore";
 
@@ -12,6 +12,14 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
     chatStore.subscribe(setChatState);
     chatStore.init();
   }, []);
+
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [chatState.data]);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +42,15 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
         justifyContent: "space-between",
       }}
     >
-      <h2>{person}</h2>
+      <h2
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        {person}
+      </h2>
       <div
         className="chat-box"
         style={{
@@ -51,6 +67,8 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
             style={{
               justifyContent:
                 message.person === "Person 1" ? "flex-start" : "flex-end",
+              paddingLeft: "10px",
+              paddingRight: "10px",
             }}
             key={index}
           >
@@ -62,6 +80,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
             </Grid>
           </Grid>
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <form id="messageForm" onSubmit={onFormSubmit}>
         <Grid container spacing={1} alignItems="center" justifyContent="center">
