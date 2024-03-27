@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Switcher from "./pages/chatPage";
 import Chat from "./components/chat";
-import chatStore from "./store/chatStore";
 
 function App() {
   return (

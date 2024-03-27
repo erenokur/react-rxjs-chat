@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import chatStore from "../store/chatStore";
 
 function ChatPage() {
@@ -15,7 +16,7 @@ function ChatPage() {
   );
 
   return (
-    <div className="switcher-div">
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <NavLink
         to="/first-person"
         style={({ isActive }) => ({
@@ -24,10 +25,11 @@ function ChatPage() {
           borderRadius: 30,
         })}
       >
-        <button className="switcher">
+        <button>
           Person 1
-          {window.location.href.split("/")[3] !== "first-person" &&
-            messageNotification}
+          {window.location.href.split("/")[3] !== "first-person" && (
+            <ChatBubbleIcon>{messageNotification}</ChatBubbleIcon>
+          )}
         </button>
       </NavLink>
 
@@ -41,8 +43,9 @@ function ChatPage() {
       >
         <button className="ChatPage">
           Person 2
-          {window.location.href.split("/")[3] !== "second-person" &&
-            messageNotification}
+          {window.location.href.split("/")[3] !== "second-person" && (
+            <ChatBubbleIcon>{messageNotification}</ChatBubbleIcon>
+          )}
         </button>
       </NavLink>
     </div>

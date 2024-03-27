@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
 import { Avatar, Button, Container, Grid, TextField } from "@material-ui/core";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import chatStore, { Message } from "../store/chatStore";
 
 interface ChatProps {
@@ -27,9 +26,23 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container
+      maxWidth={false}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
       <h2>{person}</h2>
-      <div className="chat-box">
+      <div
+        className="chat-box"
+        style={{
+          overflowY: "scroll",
+          height: "70vh",
+          width: "100%",
+        }}
+      >
         {chatState.data.map((message: Message, index: number) => (
           <Grid
             container
@@ -51,7 +64,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
         ))}
       </div>
       <form id="messageForm" onSubmit={onFormSubmit}>
-        <Grid container spacing={1} alignItems="center">
+        <Grid container spacing={1} alignItems="center" justifyContent="center">
           <Grid item>
             <TextField
               type="text"
