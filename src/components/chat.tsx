@@ -92,6 +92,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
               name="messageInput"
               placeholder="Type here..."
               required
+              inputProps={{ style: { color: "white" } }}
             />
           </Grid>
           <Grid item>
@@ -101,7 +102,11 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
           </Grid>
         </Grid>
       </form>
-      <Button className="clear-button" onClick={() => chatStore.clearChat()}>
+      <Button
+        className="clear-button"
+        onClick={() => chatStore.clearChat()}
+        style={{ color: "white" }}
+      >
         Clear Chat
       </Button>
     </Container>
