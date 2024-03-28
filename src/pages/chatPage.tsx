@@ -1,14 +1,31 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import chatStore from "../store/chatStore";
 
 function ChatPage() {
   const [chatState, setChatState] = useState(chatStore.initialState);
+  const navigate = useNavigate();
 
   useEffect(() => {
     chatStore.subscribe(setChatState);
     chatStore.init();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        chatStore.init();
+        const currentPerson = window.location.href.split("/")[3];
+        const nextPerson =
+          currentPerson === "first-person" ? "second-person" : "first-person";
+        navigate(`/${nextPerson}`);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   const clearNotification = (person: string) => {

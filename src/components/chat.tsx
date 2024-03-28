@@ -51,6 +51,17 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
       >
         {person}
       </h2>
+      <p
+        style={{
+          paddingTop: "0px",
+          marginTop: "20px",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        Tab to change user, Enter to send message
+      </p>
       <div
         className="chat-box"
         style={{
