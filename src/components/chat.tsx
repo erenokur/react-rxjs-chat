@@ -55,6 +55,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
         className="chat-box"
         style={{
           overflowY: "scroll",
+          overflowX: "hidden",
           height: "70vh",
           width: "100%",
         }}

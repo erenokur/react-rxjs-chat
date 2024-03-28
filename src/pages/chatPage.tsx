@@ -11,9 +11,11 @@ function ChatPage() {
     chatStore.init();
   }, []);
 
-  const messageNotification = chatState.newDataCount > 0 && (
-    <span className="notify">{chatState.newDataCount}</span>
-  );
+  const clearNotification = (person: string) => {
+    if (window.location.href.split("/")[3] !== person) {
+      chatStore.init();
+    }
+  };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -25,11 +27,33 @@ function ChatPage() {
           borderRadius: 30,
         })}
       >
-        <button>
-          Person 1
-          {window.location.href.split("/")[3] !== "first-person" && (
-            <ChatBubbleIcon />
-          )}
+        <button onClick={() => clearNotification("first-person")}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            Person 1
+            {window.location.href.split("/")[3] !== "first-person" && (
+              <div style={{ position: "relative", marginLeft: "10px" }}>
+                <ChatBubbleIcon />
+                <div
+                  style={{
+                    position: "absolute",
+                    right: "-5px",
+                    top: "-5px",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                    width: "20px",
+                    height: "20px",
+                    color: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontSize: "12px",
+                  }}
+                >
+                  {chatState.newDataCount}
+                </div>
+              </div>
+            )}
+          </div>
         </button>
       </NavLink>
 
@@ -41,11 +65,33 @@ function ChatPage() {
           borderRadius: 30,
         })}
       >
-        <button className="ChatPage">
-          Person 2
-          {window.location.href.split("/")[3] !== "second-person" && (
-            <ChatBubbleIcon />
-          )}
+        <button onClick={() => clearNotification("second-person")}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            Person 2
+            {window.location.href.split("/")[3] !== "second-person" && (
+              <div style={{ position: "relative", marginLeft: "10px" }}>
+                <ChatBubbleIcon />
+                <div
+                  style={{
+                    position: "absolute",
+                    right: "-5px",
+                    top: "-5px",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                    width: "20px",
+                    height: "20px",
+                    color: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontSize: "12px",
+                  }}
+                >
+                  {chatState.newDataCount}
+                </div>
+              </div>
+            )}
+          </div>
         </button>
       </NavLink>
     </div>
