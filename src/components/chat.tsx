@@ -35,7 +35,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
   };
 
   return (
-    <Container maxWidth={false} className="container">
+    <Container maxWidth={false} className="chat-container">
       <h2 className="h2">{person}</h2>
       <p className="p">Tab to change user, Enter to send message</p>
       <div className="chat-box">
@@ -61,7 +61,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <form id="messageForm" onSubmit={onFormSubmit}>
+      <form className="messageForm" onSubmit={onFormSubmit}>
         <Grid container spacing={1} alignItems="center" justifyContent="center">
           <Grid item>
             <TextField

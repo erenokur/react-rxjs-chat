@@ -15,26 +15,3 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
-.switcher-div {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-}
-
-.chat-box {
-  width: "100%";
-}
-
-#messageForm {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}
-
-.clear-button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}

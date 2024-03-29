@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import chatStore from "../store/chatStore";
+import "./chatPage.css";
 
 function ChatPage() {
   const [chatState, setChatState] = useState(chatStore.initialState);
@@ -35,7 +36,7 @@ function ChatPage() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="container">
       <NavLink
         to="/first-person"
         style={({ isActive }) => ({
@@ -45,28 +46,13 @@ function ChatPage() {
         })}
       >
         <button onClick={() => clearNotification("first-person")}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="button-container">
             Person 1
             {window.location.href.split("/")[3] !== "first-person" &&
               chatState.newDataCount > 0 && (
-                <div style={{ position: "relative", marginLeft: "10px" }}>
+                <div className="notification-bubble">
                   <ChatBubbleIcon />
-                  <div
-                    style={{
-                      position: "absolute",
-                      right: "-5px",
-                      top: "-5px",
-                      backgroundColor: "red",
-                      borderRadius: "50%",
-                      width: "20px",
-                      height: "20px",
-                      color: "white",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      fontSize: "12px",
-                    }}
-                  >
+                  <div className="notification-count">
                     {chatState.newDataCount}
                   </div>
                 </div>
@@ -84,28 +70,13 @@ function ChatPage() {
         })}
       >
         <button onClick={() => clearNotification("second-person")}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="button-container">
             Person 2
             {window.location.href.split("/")[3] !== "second-person" &&
               chatState.newDataCount > 0 && (
-                <div style={{ position: "relative", marginLeft: "10px" }}>
+                <div className="notification-bubble">
                   <ChatBubbleIcon />
-                  <div
-                    style={{
-                      position: "absolute",
-                      right: "-5px",
-                      top: "-5px",
-                      backgroundColor: "red",
-                      borderRadius: "50%",
-                      width: "20px",
-                      height: "20px",
-                      color: "white",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      fontSize: "12px",
-                    }}
-                  >
+                  <div className="notification-count">
                     {chatState.newDataCount}
                   </div>
                 </div>

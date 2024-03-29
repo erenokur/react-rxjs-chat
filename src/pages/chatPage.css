@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.notification-bubble {
+  position: relative;
+  margin-left: 10px;
+}
+
+.notification-count {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}

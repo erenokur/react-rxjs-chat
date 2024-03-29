@@ -1,6 +1,4 @@
-/* Chat.css */
-
-.container {
+.chat-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,6 +16,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.messageForm {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 
 .chat-box {
@@ -40,9 +44,20 @@
 }
 
 .clear-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
   color: white;
+}
+.clear-button span {
+  color: white !important;
 }
 
 .text-field {
   color: white;
+}
+
+.text-field input {
+  color: white !important;
 }
