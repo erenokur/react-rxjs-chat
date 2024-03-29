@@ -1,0 +1,48 @@
+/* Chat.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.p {
+  padding-top: 0px;
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.chat-box {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 70vh;
+  width: 100%;
+}
+
+.grid-container {
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.grid-container-end {
+  justify-content: flex-end;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.clear-button {
+  color: white;
+}
+
+.text-field {
+  color: white;
+}

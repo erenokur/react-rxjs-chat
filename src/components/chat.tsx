@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect, useEffect, useRef } from "react";
 import { Avatar, Button, Container, Grid, TextField } from "@material-ui/core";
 import chatStore, { Message } from "../store/chatStore";
+import "./chat.css";
 
 interface ChatProps {
   person: string;
@@ -34,54 +35,20 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
   };
 
   return (
-    <Container
-      maxWidth={false}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <h2
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        {person}
-      </h2>
-      <p
-        style={{
-          paddingTop: "0px",
-          marginTop: "20px",
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        Tab to change user, Enter to send message
-      </p>
-      <div
-        className="chat-box"
-        style={{
-          overflowY: "scroll",
-          overflowX: "hidden",
-          height: "70vh",
-          width: "100%",
-        }}
-      >
+    <Container maxWidth={false} className="container">
+      <h2 className="h2">{person}</h2>
+      <p className="p">Tab to change user, Enter to send message</p>
+      <div className="chat-box">
         {chatState.data.map((message: Message, index: number) => (
           <Grid
             container
             spacing={1}
             alignItems="center"
-            style={{
-              justifyContent:
-                message.person === "Person 1" ? "flex-start" : "flex-end",
-              paddingLeft: "10px",
-              paddingRight: "10px",
-            }}
+            className={
+              message.person === "Person 1"
+                ? "grid-container"
+                : "grid-container-end"
+            }
             key={index}
           >
             <Grid item>
@@ -103,7 +70,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
               name="messageInput"
               placeholder="Type here..."
               required
-              inputProps={{ style: { color: "white" } }}
+              InputProps={{ className: "text-field" }}
             />
           </Grid>
           <Grid item>
@@ -113,11 +80,7 @@ const Chat: React.FC<ChatProps> = ({ person }) => {
           </Grid>
         </Grid>
       </form>
-      <Button
-        className="clear-button"
-        onClick={() => chatStore.clearChat()}
-        style={{ color: "white" }}
-      >
+      <Button className="clear-button" onClick={() => chatStore.clearChat()}>
         Clear Chat
       </Button>
     </Container>
